@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Scanner - Analyze Your Food</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <h1>🍎 Food Scanner</h1>
+            <p>Scan food products to check for gluten, lactose, and ultra-processed ingredients</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="screen active">
+                <div class="welcome-content">
+                    <div class="scanner-icon">📷</div>
+                    <h2>Welcome to Food Scanner</h2>
+                    <p>Scan food products to check for:</p>
+                    <div class="features">
+                        <div class="feature">
+                            <span class="feature-icon">🌾</span>
+                            <span>Gluten</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🥛</span>
+                            <span>Lactose</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">⚠️</span>
+                            <span>Ultra-processed ingredients</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">📊</span>
+                            <span>Complete nutrition facts</span>
+                        </div>
+                    </div>
+                    <button id="start-scan-btn" class="primary-button">Start Scanning</button>
+                    <div class="manual-input">
+                        <p>Or enter barcode manually:</p>
+                        <input type="text" id="manual-barcode" placeholder="Enter barcode number">
+                        <button id="manual-submit-btn" class="secondary-button">Analyze</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scanner Screen -->
+            <div id="scanner-screen" class="screen">
+                <div class="scanner-content">
+                    <h2>Scan Product Barcode</h2>
+                    <div id="scanner-container">
+                        <div id="scanner"></div>
+                        <div class="scanner-overlay">
+                            <div class="scanner-frame"></div>
+                        </div>
+                    </div>
+                    <p class="scanner-instruction">Position the barcode within the frame</p>
+                    <button id="stop-scan-btn" class="secondary-button">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Loading Screen -->
+            <div id="loading-screen" class="screen">
+                <div class="loading-content">
+                    <div class="spinner"></div>
+                    <h2>Analyzing Product...</h2>
+                    <p>Fetching product information and analyzing ingredients</p>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="results-screen" class="screen">
+                <div class="results-content">
+                    <h2>Analysis Results</h2>
+                    <div id="product-info" class="product-info"></div>
+                    <div id="analysis-results" class="analysis-results"></div>
+                    <div id="nutrition-summary" class="nutrition-summary"></div>
+                    <button id="nutrition-details-btn" class="secondary-button" style="display: none;">View Detailed Nutrition</button>
+                    <button id="scan-again-btn" class="primary-button">Scan Another Product</button>
+                </div>
+            </div>
+
+            <!-- Nutrition Details Screen -->
+            <div id="nutrition-screen" class="screen">
+                <div class="nutrition-content">
+                    <div class="screen-header">
+                        <button id="back-to-results-btn" class="back-button">← Back</button>
+                        <h2>Nutrition Facts</h2>
+                    </div>
+                    <div id="nutrition-details" class="nutrition-details"></div>
+                </div>
+            </div>
+
+            <!-- Error Screen -->
+            <div id="error-screen" class="screen">
+                <div class="error-content">
+                    <div class="error-icon">⚠️</div>
+                    <h2>Error</h2>
+                    <p id="error-message">Something went wrong</p>
+                    <button id="try-again-btn" class="primary-button">Try Again</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by <a href="https://world.openfoodfacts.org/" target="_blank">OpenFoodFacts</a></p>
+            <p>Data is sourced from the collaborative food database</p>
+        </footer>
+    </div>
+
+    <script src="ingredient-detector.js"></script>
+    <script src="nutrition-analyzer.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
